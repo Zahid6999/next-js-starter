@@ -1,0 +1,94 @@
+// Marquee CSS
+:root {
+  --marquee-width: 100%;
+  --marquee-height: 50px;
+  --marquee-elements-displayed: 6;
+  --marquee-element-width: calc(var(--marquee-width) / var(--marquee-elements-displayed));
+  --marquee-animation-duration: calc(var(--marquee-elements) * 3s);
+  @media (max-width: theme('screens.lg')) {
+    --marquee-elements-displayed: 4;
+  }
+  @media (max-width: theme('screens.md')) {
+    --marquee-elements-displayed: 3;
+  }
+  @media (max-width: theme('screens.sm')) {
+    --marquee-elements-displayed: 2;
+  }
+}
+.marquee-items {
+  position: relative;
+  margin: 0 auto;
+  width: var(--marquee-width);
+  overflow: hidden;
+
+  .marquee-content {
+    display: flex;
+    animation: scrolling var(--marquee-animation-duration) linear infinite;
+    animation-duration: 20s;
+    height: 100%;
+    list-style: none;
+    &:hover {
+      animation-play-state: paused;
+    }
+    .marquee-content-list {
+      display: flex;
+      position: relative;
+      flex-shrink: 0;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: var(--marquee-element-width);
+    }
+  }
+  .marquee-content-2 {
+    display: flex;
+    animation: scrolling var(--marquee-animation-duration) linear infinite reverse;
+    animation-duration: 20s;
+    height: 100%;
+    list-style: none;
+    &:hover {
+      animation-play-state: paused;
+    }
+    .marquee-content-list {
+      display: flex;
+      position: relative;
+      flex-shrink: 0;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: var(--marquee-element-width);
+    }
+  }
+}
+@keyframes scrolling {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-1 * var(--marquee-element-width) * var(--marquee-elements)));
+  }
+}
+
+// Career  tab-------
+.tab-button {
+  @apply relative transition-all duration-[0.6s];
+
+  &.active {
+    @apply bg-primary;
+  }
+}
+
+.tab-content {
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    transform: translateY(15px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

@@ -1,0 +1,408 @@
+*::after,
+*::before {
+  @apply text-[0] leading-none;
+}
+.fa-solid::after,
+.fa-solid::before,
+.fa-brands::after,
+.fa-brands::before,
+.fa-regular::after,
+.fa-regular::before {
+  @apply text-base leading-[1];
+}
+
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth[data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+body {
+  @apply font-satoshi bg-backgroundBody m-0 max-w-[100vw] overflow-x-hidden p-0 antialiased dark:bg-black;
+}
+
+// Circle Text Rotate animation
+.text {
+  position: absolute;
+  animation: textRotation 20s linear infinite;
+  width: 100%;
+  height: 100%;
+  font-family: 'Satoshi';
+
+  text-transform: uppercase;
+  span {
+    position: absolute;
+    top: 8%;
+    left: 50%;
+    transform-origin: 0 70px;
+    color: white;
+    font-weight: 600;
+    font-size: 12px;
+    font-family: 'Satoshi';
+    @apply dark:text-secondary;
+  }
+}
+
+@keyframes textRotation {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// canvas
+canvas {
+  @apply relative -left-[1px] -right-[1px] -top-[1px];
+}
+
+// Faq icon
+.accordion-header-icon {
+  @apply ease-faq-body-transition before:bg-secondary dark:before:bg-backgroundBody before:ease-faq-body-transition after:bg-secondary dark:after:bg-backgroundBody after:ease-faq-body-transition absolute right-3 top-3 h-10 w-10 rounded-[50%] border border-[#e5e5e5] duration-[0.4s] before:absolute before:left-1/2 before:top-1/2 before:h-5 before:w-[1px] before:-translate-x-1/2 before:-translate-y-1/2 before:duration-[0.4s] before:content-[''] after:absolute after:left-1/2 after:top-1/2 after:h-5 after:w-[1px] after:-translate-x-1/2 after:-translate-y-1/2 after:duration-[0.4s] after:content-[''] md:right-10 md:top-[29px];
+}
+.accordion-header-icon::after {
+  @apply -translate-x-1/2 -translate-y-1/2 rotate-90;
+}
+
+.accordion-header-iconV3 {
+  @apply bg-primary ease-faq-body-transition relative inline-flex size-14 transition-all duration-[0.4] max-lg:px-4 md:size-24;
+  svg {
+    @apply ease-faq-body-transition rotate-0 transition-all duration-300;
+  }
+}
+
+// FaqV4 icon
+.accordion-header-iconV4 {
+  @apply ease-faq-body-transition before:bg-secondary dark:before:bg-backgroundBody before:ease-faq-body-transition after:bg-secondary dark:after:bg-backgroundBody after:ease-faq-body-transition absolute bottom-7 right-7 h-10 w-10 rounded-[50%] border border-[#e5e5e5] duration-[0.4s] before:absolute before:left-1/2 before:top-1/2 before:h-5 before:w-[1px] before:-translate-x-1/2 before:-translate-y-1/2 before:duration-[0.4s] before:content-[''] after:absolute after:left-1/2 after:top-1/2 after:h-5 after:w-[1px] after:-translate-x-1/2 after:-translate-y-1/2 after:duration-[0.4s] after:content-[''];
+}
+.accordion-header-iconV4::after {
+  @apply -translate-x-1/2 -translate-y-1/2 rotate-90;
+}
+
+// active toggle Icon
+.active {
+  .accordion-header-icon {
+    @apply bg-secondary dark:bg-backgroundBody border-secondary dark:border-backgroundBody before:bg-backgroundBody dark:before:bg-secondary after:bg-backgroundBody dark:after:bg-secondary border;
+  }
+  .accordion-header-icon::before {
+    @apply -translate-x-1/2 -translate-y-1/2 rotate-[270deg];
+  }
+}
+
+.active {
+  @apply bg-inherit;
+  .accordion-header-iconV3 {
+    @apply ease-faq-body-transition bg-black transition-all duration-[0.4];
+    svg {
+      @apply ease-faq-body-transition rotate-90 duration-300;
+      path {
+        @apply stroke-white transition-all duration-150;
+      }
+    }
+  }
+}
+
+.active {
+  .accordion-header-iconV4 {
+    @apply bg-secondary dark:bg-primary border-secondary dark:border-primary before:bg-backgroundBody dark:before:bg-secondary after:bg-backgroundBody dark:after:bg-secondary border;
+  }
+  .accordion-header-iconV4::before {
+    @apply -translate-x-1/2 -translate-y-1/2 rotate-[270deg];
+  }
+}
+
+// .tab-active--------------
+.our-team-details {
+  @apply relative transition-opacity duration-300 ease-in-out;
+  transition:
+    transform 0.4s ease-in-out,
+    opacity 0.4s ease-in-out;
+
+  figure {
+    img {
+      transition:
+        transform 0.4s ease-in-out,
+        opacity 0.4s ease-in-out;
+    }
+  }
+
+  h2,
+  p {
+    transition:
+      transform 0.4s ease-in-out,
+      opacity 0.4s ease-in-out;
+  }
+
+  &.transitioning {
+    @apply translate-y-2.5 opacity-0 ease-in-out;
+    figure img,
+    h2,
+    p {
+      @apply translate-y-2.5 opacity-0 ease-in-out;
+    }
+  }
+}
+
+.tab-member {
+  @apply relative cursor-pointer overflow-hidden transition-all duration-300 ease-in-out;
+  @apply translate-y-0;
+
+  &::after {
+    @apply bg-secondary dark:bg-primary absolute bottom-0 left-0 h-[1px] w-0 transition-all duration-500 ease-in-out content-[''];
+  }
+
+  &:hover {
+    &::after {
+      @apply w-full;
+    }
+
+    &:not(.tab-active) {
+      @apply -translate-y-[2px];
+    }
+  }
+
+  &.tab-active {
+    @apply bg-secondary dark:bg-primary text-backgroundBody -translate-y-[2px] transition-all duration-300 ease-in-out;
+
+    h3 {
+      @apply dark:text-secondary text-white transition-colors duration-300 ease-in-out;
+    }
+
+    p {
+      @apply dark:text-colorText transition-colors duration-300 ease-in-out;
+    }
+  }
+}
+
+// ===================
+
+.project-details-body {
+  img {
+    &:not(:first-child) {
+      @apply my-9 md:my-[60px];
+    }
+  }
+  h3 {
+    @apply mb-5 mt-9 md:mt-[60px] md:text-[40px] md:leading-[1.2];
+  }
+}
+.project-details2-body {
+  h3 {
+    @apply mb-5 mt-9 md:mt-[60px] md:text-[40px] md:leading-[1.2];
+  }
+  p {
+    @apply text-colorText dark:text-dark-100 max-w-[970px] md:text-[22px] md:leading-[1.4] [&>*:not(:first-child)]:mt-5;
+  }
+  img {
+    @apply mt-9 md:mt-20;
+  }
+}
+
+.blog-details-body {
+  @apply -mt-[60px];
+  h3 {
+    @apply mb-5 mt-9 md:text-[40px] md:leading-[1.2] lg:mt-[60px];
+  }
+  p {
+    @apply text-colorText dark:text-dark-100 md:text-[22px] md:leading-[1.4];
+  }
+  ul {
+    @apply my-5 ml-4 md:ml-6;
+    li {
+      @apply text-colorText dark:text-dark-100 list-disc md:text-[21px] md:leading-[1.4];
+    }
+  }
+  img {
+    @apply my-9 lg:my-[60px];
+  }
+}
+
+.terms-body {
+  @apply mx-auto max-w-[970px] pb-[220px];
+  h3 {
+    @apply mt-9 text-2xl md:mt-[60px] md:text-[40px] md:leading-[1.2];
+  }
+  p {
+    @apply dark:text-colorText mt-4 text-lg md:text-2xl md:leading-[1.4];
+  }
+  ul {
+    @apply ml-4 mt-4 md:ml-6;
+    li {
+      @apply text-colorText list-disc text-[21px] leading-[1.4];
+    }
+  }
+}
+
+.text-appear {
+  .line {
+    @apply overflow-hidden text-inherit;
+    span {
+      @apply text-inherit;
+    }
+    .word {
+      @apply text-inherit;
+    }
+  }
+}
+
+// Blog-title Hover-effect--------
+.blog-title h3 {
+  @apply inline w-full cursor-pointer pb-[1px] transition-all duration-700 ease-in-out;
+  -webkit-transition: all 500ms ease-in-out;
+  -o-transition: all 500ms ease-in-out;
+  background-image: linear-gradient(transparent calc(100% - 2px), #101010 2px);
+  background-size: 0% 100%;
+  background-repeat: no-repeat;
+}
+
+.dark {
+  .blog-title h3 {
+    background-image: linear-gradient(transparent calc(100% - 2px), #ffffff 2px);
+  }
+}
+
+.blog-title:hover h3 {
+  background-size: 100% 100%;
+}
+
+// ai-team-title-hover-effect-----
+.team-title h3 {
+  @apply inline w-full cursor-pointer pb-[1px] transition-all duration-700 ease-in-out;
+  -webkit-transition: all 500ms ease-in-out;
+  -o-transition: all 500ms ease-in-out;
+  background-image: linear-gradient(transparent calc(100% - 2px), #fff 2px);
+  background-size: 0% 100%;
+  background-repeat: no-repeat;
+}
+
+.team-title:hover h3 {
+  background-size: 100% 100%;
+}
+
+// Counter animation-----
+@keyframes slide-up {
+  from {
+    @apply opacity-0 duration-150;
+  }
+  to {
+    @apply opacity-100 duration-150;
+  }
+}
+
+// Marquee --------------
+
+.animate-marquee {
+  animation: marqueeAni 6000ms linear infinite;
+}
+
+@keyframes marqueeAni {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+// Automatic Numbering Counters------
+.service-item-wrapper {
+  counter-reset: service-item-number;
+  .service-item-number {
+    &::before {
+      @apply right-[60px] -translate-x-[60px] md:right-[40px] md:-translate-x-[40px] lg:right-[70px] lg:-translate-x-[70px];
+      position: absolute;
+      background: -webkit-linear-gradient(#86858599, #fff);
+      background-clip: text;
+      -webkit-background-clip: text;
+      font-size: 180px;
+      -webkit-text-fill-color: transparent;
+
+      top: 0;
+      z-index: -1;
+      counter-increment: service-item-number;
+      content: '' counter(service-item-number);
+      font-weight: 900;
+    }
+  }
+}
+
+// Reveal Me-------
+.reveal-me {
+  @apply overflow-hidden;
+}
+
+// Pointer-----------
+.pointer {
+  @apply bg-backgroundBody pointer-events-none fixed z-[9999] flex h-4 w-4 -translate-x-2 -translate-y-2 items-center justify-center self-center rounded-[300px] mix-blend-difference;
+}
+
+.menu-list-item {
+  .menu-list-item-text {
+    @apply relative transition duration-300;
+    &::before {
+      @apply absolute right-0 top-1/2 h-[1px] w-48 origin-left translate-x-[120%] translate-y-1/2 scale-0 bg-white bg-opacity-10 transition duration-300 content-[''];
+    }
+  }
+  .menu-list-item-dropdown {
+    @apply pointer-events-none translate-x-3 opacity-0 transition duration-300;
+  }
+  &.active {
+    .menu-list-item-text {
+      @apply text-primary;
+      &::before {
+        @apply scale-100;
+      }
+    }
+    .menu-list-item-dropdown {
+      @apply pointer-events-auto translate-x-0 opacity-100;
+    }
+  }
+}
+
+.footer-text {
+  background: -webkit-radial-gradient(#fff, #101010);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.swiper-wrapper {
+  display: flex;
+  position: relative;
+  z-index: 1;
+  transition-property: transform;
+  transition-timing-function: var(--swiper-wrapper-transition-timing-function, initial);
+  box-sizing: content-box;
+  width: 100%;
+  height: 100%;
+}
+.swiper-android .swiper-slide,
+.swiper-ios .swiper-slide,
+.swiper-wrapper {
+  transform: translate3d(0px, 0, 0);
+}
+.swiper-horizontal {
+  touch-action: pan-y;
+}
+.swiper-slide {
+  display: block;
+  position: relative;
+  flex-shrink: 0;
+  transition-property: transform;
+  width: 100%;
+  height: 100%;
+}
+.swiper-slide-invisible-blank {
+  visibility: hidden;
+}
